@@ -5,6 +5,7 @@ if [ "$#" -eq 2 ]; then
 	AFTER_UPDATE_VERSION=$2
 else
 	echo "Usage $0 server-before-upgrade-version server-updated-version"
+	exit
 fi
 
 
@@ -73,6 +74,11 @@ upgrade_server(){
 	cd server
 	VERSION=$1 docker-compose up -d
 	cd ..
+	python3 sanity.py
+}
+
+check_upgraded_server(){
+	python3 check_server.py
 }
 
 set -e
@@ -84,4 +90,6 @@ trap finish_environment ERR
 prepare_environment
 install_server $BEFORE_UPDATE_VERSION
 populate_server
+check_upgraded_server
 upgrade_server $AFTER_UPDATE_VERSION
+check_upgraded_server

@@ -20,11 +20,11 @@
             ],
             "files": [
                 {
-                    "localpath": "../files_to_upload/localfile.txt",
+                    "localpath": "populator/files_to_upload/localfile.txt",
                     "destinationpath": "things/testfile1.txt"
                 },
                 {
-                    "localpath": "../files_to_upload/testfile2.txt",
+                    "localpath": "populator/files_to_upload/testfile2.txt",
                     "destinationpath": "things/testfile2.txt"
                 }
             ],
